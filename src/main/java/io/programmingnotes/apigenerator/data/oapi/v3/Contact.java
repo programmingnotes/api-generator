@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 public class Contact extends AbsExtendedOpenApiSchema<Contact> {
   private String email;

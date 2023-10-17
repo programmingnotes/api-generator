@@ -1,14 +1,15 @@
-package org.openapi4j.parser.model;
+package io.programmingnotes.apigenerator.data.oapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.openapi4j.core.model.OAIContext;
-import org.openapi4j.core.model.reference.Reference;
+import io.programmingnotes.apigenerator.data.oapi.reference.Reference;
+
 
 import java.net.URL;
 
-import static org.openapi4j.core.model.reference.Reference.ABS_REF_FIELD;
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.$REF;
+import static io.programmingnotes.apigenerator.data.oapi.reference.Reference.ABS_REF_FIELD;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.$REF;
+
 
 /**
  * Base class for Open API schema which can be represented as reference.

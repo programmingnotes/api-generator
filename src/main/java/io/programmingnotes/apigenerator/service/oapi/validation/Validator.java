@@ -1,7 +1,7 @@
-package io.programmingnotes.apigenerator.service.oapi.validator;
+package io.programmingnotes.apigenerator.service.oapi.validation;
 
-import org.openapi4j.core.model.OAI;
-import org.openapi4j.core.validation.ValidationResults;
+
+import io.programmingnotes.apigenerator.data.oapi.OAI;
 
 public interface Validator<O extends OAI, T> {
   void validate(ValidationContext<O> context, O api, T object, ValidationResults results);

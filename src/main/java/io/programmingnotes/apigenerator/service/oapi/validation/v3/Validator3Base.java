@@ -1,21 +1,20 @@
-package io.programmingnotes.apigenerator.service.oapi.validator.v3;
+package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.model.reference.Reference;
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.AbsRefOpenApiSchema;
-import org.openapi4j.parser.model.OpenApiSchema;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
-import org.openapi4j.parser.validation.ValidatorBase;
+
+
+import io.programmingnotes.apigenerator.data.oapi.AbsRefOpenApiSchema;
+import io.programmingnotes.apigenerator.data.oapi.OpenApiSchema;
+import io.programmingnotes.apigenerator.data.oapi.reference.Reference;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.service.oapi.validation.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+
 
 abstract class Validator3Base<O extends OpenApi3, T> extends ValidatorBase<O, T> {
   protected static final ValidationResult INVALID_URL = new ValidationResult(ERROR, 108, "Invalid URL '%s'");

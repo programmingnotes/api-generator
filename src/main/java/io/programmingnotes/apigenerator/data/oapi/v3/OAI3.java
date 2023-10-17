@@ -1,4 +1,4 @@
-package org.openapi4j.core.model.v3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import org.openapi4j.core.model.OAI;
 

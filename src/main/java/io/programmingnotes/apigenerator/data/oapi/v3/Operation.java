@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapi4j.core.model.OAIContext;

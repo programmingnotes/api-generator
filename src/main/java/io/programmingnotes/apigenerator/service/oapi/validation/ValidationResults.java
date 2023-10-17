@@ -1,4 +1,4 @@
-package org.openapi4j.core.validation;
+package io.programmingnotes.apigenerator.service.oapi.validation;
 
 import java.io.Serializable;
 import java.util.*;
@@ -87,7 +87,7 @@ public class ValidationResults implements Serializable {
    * @param parentCrumbs The given parent crumbs to insert. Must be non {@code null}.
    * @param resultItems  The stack to append. Must be non {@code null}.
    */
-  public void add(Collection<ValidationResults.CrumbInfo> parentCrumbs, Collection<ValidationResults.ValidationItem> resultItems) {
+  public void add(Collection<CrumbInfo> parentCrumbs, Collection<ValidationItem> resultItems) {
     // Add parent crumbs & update severity
     for (ValidationItem item : resultItems) {
       item.crumbs.addAll(0, parentCrumbs);
@@ -184,7 +184,7 @@ public class ValidationResults implements Serializable {
     StringBuilder warnBuilder = new StringBuilder();
     StringBuilder infoBuilder = new StringBuilder();
 
-    for (ValidationResults.ValidationItem item : items) {
+    for (ValidationItem item : items) {
       switch (item.severity()) {
         case ERROR:
           errBuilder.append(item.toString()).append(LINE_SEPARATOR);

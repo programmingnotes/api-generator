@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;

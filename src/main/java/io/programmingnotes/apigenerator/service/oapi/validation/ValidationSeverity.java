@@ -1,4 +1,4 @@
-package org.openapi4j.core.validation;
+package io.programmingnotes.apigenerator.service.oapi.validation;
 
 /**
  * The validation severity enumeration.

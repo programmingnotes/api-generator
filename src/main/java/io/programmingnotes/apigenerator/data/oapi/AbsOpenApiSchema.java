@@ -1,13 +1,15 @@
-package org.openapi4j.parser.model;
+package io.programmingnotes.apigenerator.data.oapi;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.openapi4j.core.exception.EncodeException;
-import org.openapi4j.core.util.TreeUtil;
+import io.programmingnotes.apigenerator.exception.EncodeException;
+import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
+
 
 import java.util.*;
 
-import static org.openapi4j.core.util.TreeUtil.ENCODE_ERR_MSG;
+import static io.programmingnotes.apigenerator.service.oapi.util.TreeUtil.ENCODE_ERR_MSG;
+
 
 public abstract class AbsOpenApiSchema<M extends OpenApiSchema<M>> implements OpenApiSchema<M> {
   protected static class Views {

@@ -1,12 +1,15 @@
-package io.programmingnotes.apigenerator.service.oapi.validator.v3;
+package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.Discriminator;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
 
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_PROPERTYNAME;
+
+import io.programmingnotes.apigenerator.data.oapi.v3.Discriminator;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
+
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_PROPERTYNAME;
+
 
 class DiscriminatorValidator extends Validator3Base<OpenApi3, Discriminator> {
   private static final Validator<OpenApi3, Discriminator> INSTANCE = new DiscriminatorValidator();

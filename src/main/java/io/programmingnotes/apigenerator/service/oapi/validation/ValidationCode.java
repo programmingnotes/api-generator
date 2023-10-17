@@ -1,4 +1,4 @@
-package org.openapi4j.core.validation;
+package io.programmingnotes.apigenerator.service.oapi.validation;
 
 /**
  * Utility functional interface to wrap validation code.

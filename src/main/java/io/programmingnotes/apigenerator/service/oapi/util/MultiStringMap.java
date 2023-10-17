@@ -1,10 +1,10 @@
-package org.openapi4j.core.util;
+package io.programmingnotes.apigenerator.service.oapi.util;
 
 import java.util.*;
 
 /**
  * Utility class to wrap a multivalued key.
- * The key type is always {@link java.lang.String}.
+ * The key type is always {@link String}.
  *
  * @param <V> The type of the values.
  */

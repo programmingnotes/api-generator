@@ -1,17 +1,19 @@
-package org.openapi4j.core.model.v3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.model.AuthOption;
-import org.openapi4j.core.model.reference.AbstractReferenceResolver;
-import org.openapi4j.core.model.reference.ReferenceRegistry;
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.reference.AbstractReferenceResolver;
+import io.programmingnotes.apigenerator.data.oapi.reference.ReferenceRegistry;
+
 
 import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.$REF;
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.MAPPING;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.$REF;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.MAPPING;
+
 
 /**
  * The JSON reference resolver for discriminator mapping.

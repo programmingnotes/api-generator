@@ -1,6 +1,7 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
-import org.openapi4j.parser.model.AbsOpenApiSchema;
+
+import io.programmingnotes.apigenerator.data.oapi.AbsOpenApiSchema;
 
 import java.util.Map;
 

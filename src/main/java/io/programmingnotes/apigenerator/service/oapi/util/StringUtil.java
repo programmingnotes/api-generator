@@ -1,4 +1,4 @@
-package org.openapi4j.core.util;
+package io.programmingnotes.apigenerator.service.oapi.util;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public class Tag extends AbsExtendedOpenApiSchema<Tag> {

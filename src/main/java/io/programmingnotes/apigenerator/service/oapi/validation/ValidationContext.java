@@ -1,7 +1,8 @@
-package io.programmingnotes.apigenerator.service.oapi.validator;
+package io.programmingnotes.apigenerator.service.oapi.validation;
 
-import org.openapi4j.core.model.OAI;
-import org.openapi4j.core.validation.ValidationResults;
+
+
+import io.programmingnotes.apigenerator.data.oapi.OAI;
 
 import java.util.HashSet;
 import java.util.Set;

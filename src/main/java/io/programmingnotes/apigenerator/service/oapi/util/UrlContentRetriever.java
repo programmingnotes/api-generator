@@ -1,7 +1,9 @@
-package org.openapi4j.core.util;
+package io.programmingnotes.apigenerator.service.oapi.util;
 
-import org.openapi4j.core.exception.ResolutionException;
-import org.openapi4j.core.model.AuthOption;
+
+
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.exception.ResolutionException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,8 +12,8 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static io.programmingnotes.apigenerator.data.oapi.AuthOption.Type.QUERY;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.openapi4j.core.model.AuthOption.Type.QUERY;
 
 /**
  * Utility class to assign authentication values to a request.

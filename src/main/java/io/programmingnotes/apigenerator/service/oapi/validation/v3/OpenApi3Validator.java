@@ -1,10 +1,11 @@
-package io.programmingnotes.apigenerator.service.oapi.validator.v3;
+package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationException;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.core.validation.ValidationSeverity;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.validation.ValidationContext;
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationException;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity;
 
 public class OpenApi3Validator {
   private static final String VALIDATION_FAILURE = "OpenApi3 validation failure";

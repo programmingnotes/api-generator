@@ -1,15 +1,17 @@
-package org.openapi4j.core.model.reference;
+package io.programmingnotes.apigenerator.data.oapi.reference;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.openapi4j.core.exception.ResolutionException;
-import org.openapi4j.core.model.AuthOption;
-import org.openapi4j.core.util.TreeUtil;
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.exception.ResolutionException;
+import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
+
 
 import java.net.URL;
 import java.util.*;
 
-import static org.openapi4j.core.model.reference.Reference.ABS_REF_FIELD;
+import static io.programmingnotes.apigenerator.data.oapi.reference.Reference.ABS_REF_FIELD;
+
 
 /**
  * Base class for JSON reference resolution implementation.

@@ -1,9 +1,11 @@
-package org.openapi4j.parser;
+package io.programmingnotes.apigenerator.service.oapi;
 
-import org.openapi4j.core.exception.ResolutionException;
-import org.openapi4j.core.model.AuthOption;
-import org.openapi4j.core.model.OAI;
-import org.openapi4j.core.validation.ValidationException;
+
+
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.OAI;
+import io.programmingnotes.apigenerator.exception.ResolutionException;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationException;
 
 import java.io.File;
 import java.net.MalformedURLException;

@@ -1,4 +1,4 @@
-package org.openapi4j.core.model;
+package io.programmingnotes.apigenerator.data.oapi;
 
 import java.net.URL;
 import java.util.function.Predicate;

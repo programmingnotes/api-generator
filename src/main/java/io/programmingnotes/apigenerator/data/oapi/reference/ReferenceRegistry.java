@@ -1,4 +1,4 @@
-package org.openapi4j.core.model.reference;
+package io.programmingnotes.apigenerator.data.oapi.reference;
 
 import java.net.URI;
 import java.net.URL;

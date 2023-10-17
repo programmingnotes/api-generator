@@ -1,11 +1,12 @@
-package org.openapi4j.core.util;
+package io.programmingnotes.apigenerator.service.oapi.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.exception.EncodeException;
-import org.openapi4j.core.model.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.exception.EncodeException;
+
 
 import java.io.InputStream;
 import java.net.URL;

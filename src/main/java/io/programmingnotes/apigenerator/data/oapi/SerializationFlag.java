@@ -1,4 +1,4 @@
-package org.openapi4j.parser.model;
+package io.programmingnotes.apigenerator.data.oapi;
 
 /**
  * Options for serialization

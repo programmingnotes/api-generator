@@ -1,4 +1,4 @@
-package org.openapi4j.core.exception;
+package io.programmingnotes.apigenerator.exception;
 
 /**
  * Exception for resolution representation.

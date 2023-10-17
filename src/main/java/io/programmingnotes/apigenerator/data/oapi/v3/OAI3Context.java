@@ -1,16 +1,18 @@
-package org.openapi4j.core.model.v3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.exception.ResolutionException;
-import org.openapi4j.core.model.AuthOption;
-import org.openapi4j.core.model.OAIContext;
-import org.openapi4j.core.model.reference.ReferenceRegistry;
-import org.openapi4j.core.model.reference.ReferenceResolver;
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
+import io.programmingnotes.apigenerator.data.oapi.reference.ReferenceRegistry;
+import io.programmingnotes.apigenerator.data.oapi.reference.ReferenceResolver;
+import io.programmingnotes.apigenerator.exception.ResolutionException;
+
 
 import java.net.URL;
 import java.util.List;
 
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.$REF;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.$REF;
+
 
 /**
  * Open API v3 context.

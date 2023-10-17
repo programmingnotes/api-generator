@@ -1,8 +1,8 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import org.openapi4j.parser.model.AbsOpenApiSchema;
+import io.programmingnotes.apigenerator.data.oapi.AbsOpenApiSchema;
 
 import java.util.HashMap;
 import java.util.List;

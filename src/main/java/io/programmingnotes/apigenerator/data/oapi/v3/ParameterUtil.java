@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import org.openapi4j.core.exception.DecodeException;
 import org.openapi4j.core.model.OAIContext;

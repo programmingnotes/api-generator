@@ -1,9 +1,10 @@
-package org.openapi4j.core.model.reference;
+package io.programmingnotes.apigenerator.data.oapi.reference;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.util.TreeUtil;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
+
 
 import java.net.URL;
 

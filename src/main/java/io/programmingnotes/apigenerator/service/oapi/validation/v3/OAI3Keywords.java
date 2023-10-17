@@ -1,6 +1,7 @@
-package io.programmingnotes.apigenerator.service.oapi.validator.v3;
+package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResults;
+
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
 
 class OAI3Keywords {
   private OAI3Keywords() {}

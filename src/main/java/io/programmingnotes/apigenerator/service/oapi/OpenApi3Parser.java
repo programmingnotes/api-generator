@@ -1,12 +1,14 @@
-package org.openapi4j.parser;
+package io.programmingnotes.apigenerator.service.oapi;
 
-import org.openapi4j.core.exception.ResolutionException;
-import org.openapi4j.core.model.AuthOption;
-import org.openapi4j.core.model.v3.OAI3Context;
-import org.openapi4j.core.util.TreeUtil;
-import org.openapi4j.core.validation.ValidationException;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.validation.v3.OpenApi3Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.v3.OAI3Context;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.exception.ResolutionException;
+import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationException;
+import io.programmingnotes.apigenerator.service.oapi.validation.v3.OpenApi3Validator;
 
 import java.net.URL;
 import java.util.List;

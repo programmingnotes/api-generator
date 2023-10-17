@@ -1,8 +1,8 @@
-package org.openapi4j.parser.model;
+package io.programmingnotes.apigenerator.data.oapi;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.exception.EncodeException;
+import io.programmingnotes.apigenerator.exception.EncodeException;
 
 import java.util.EnumSet;
 

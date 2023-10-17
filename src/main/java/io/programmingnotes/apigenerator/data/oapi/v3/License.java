@@ -1,4 +1,4 @@
-package io.programmingnotes.apigenerator.data.oapi3;
+package io.programmingnotes.apigenerator.data.oapi.v3;
 
 public class License extends AbsExtendedOpenApiSchema<License> {
   private String name;

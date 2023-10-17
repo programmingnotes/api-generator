@@ -1,7 +1,7 @@
-package org.openapi4j.core.model.reference;
+package io.programmingnotes.apigenerator.data.oapi.reference;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.model.AuthOption;
+import io.programmingnotes.apigenerator.data.oapi.AuthOption;
 
 import java.net.URL;
 import java.util.Collection;
