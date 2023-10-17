@@ -11,9 +11,7 @@ import static io.programmingnotes.apigenerator.data.oapi.reference.Reference.ABS
 import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.$REF;
 
 
-/**
- * Base class for Open API schema which can be represented as reference.
- */
+
 public abstract class AbsRefOpenApiSchema<M extends OpenApiSchema<M>> extends AbsOpenApiSchema<M> {
   @JsonProperty($REF)
   private String ref;
