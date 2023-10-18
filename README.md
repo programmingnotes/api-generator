@@ -1,2 +1,2 @@
 # API Generator
-Application to build APIs
+Complete documentation
