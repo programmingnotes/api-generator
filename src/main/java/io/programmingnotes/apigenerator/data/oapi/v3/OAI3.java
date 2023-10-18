@@ -1,6 +1,7 @@
 package io.programmingnotes.apigenerator.data.oapi.v3;
 
-import org.openapi4j.core.model.OAI;
+
+import io.programmingnotes.apigenerator.data.oapi.OAI;
 
 /**
  * Open API v3 declaration for typing.

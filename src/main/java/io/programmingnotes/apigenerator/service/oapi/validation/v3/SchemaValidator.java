@@ -1,12 +1,14 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.Discriminator;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.Schema;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.Discriminator;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.Schema;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -14,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.*;
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.*;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class SchemaValidator extends Validator3Base<OpenApi3, Schema> {
   private static final Pattern TYPE_REGEX = Pattern.compile(

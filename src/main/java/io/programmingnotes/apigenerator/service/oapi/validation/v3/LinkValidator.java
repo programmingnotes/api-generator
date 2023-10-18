@@ -1,17 +1,19 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.model.reference.Reference;
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.Link;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.Operation;
-import org.openapi4j.parser.model.v3.Parameter;
-import org.openapi4j.parser.validation.ValidationContext;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+
+import io.programmingnotes.apigenerator.data.oapi.reference.Reference;
+import io.programmingnotes.apigenerator.data.oapi.v3.Link;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.Operation;
+import io.programmingnotes.apigenerator.data.oapi.v3.Parameter;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class LinkValidator extends ExpressionValidator<Link> {
   private static final ValidationResult OP_FIELD_MISSING_ERR = new ValidationResult(ERROR, 115, "'operationRef', 'operationId' or '$ref' field missing.");

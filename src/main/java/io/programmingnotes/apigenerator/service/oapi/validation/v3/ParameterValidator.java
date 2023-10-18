@@ -1,15 +1,17 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.Parameter;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.core.validation.ValidationSeverity.WARNING;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.data.oapi.v3.Parameter;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
+
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.WARNING;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class ParameterValidator extends Validator3Base<OpenApi3, Parameter> {
   private static final ValidationResult ALLOWED_RESERVED_IGNORED = new ValidationResult(WARNING, 125, "AllowReserved is ignored for non-query parameter '%s'");

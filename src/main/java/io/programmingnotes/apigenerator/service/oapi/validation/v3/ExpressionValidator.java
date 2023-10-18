@@ -1,17 +1,19 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.model.OAIContext;
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.*;
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
+import io.programmingnotes.apigenerator.data.oapi.v3.*;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
 
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.TYPE_ARRAY;
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.TYPE_ARRAY;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+
+;
 
 abstract class ExpressionValidator<M> extends Validator3Base<OpenApi3, M> {
   private static final ValidationResult PARAM_NOT_FOUND_ERR = new ValidationResult(ERROR, 111, "Parameter '%s' not found in operation.");

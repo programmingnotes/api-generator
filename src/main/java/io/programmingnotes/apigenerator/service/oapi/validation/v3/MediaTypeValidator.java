@@ -1,19 +1,21 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.EncodingProperty;
-import org.openapi4j.parser.model.v3.MediaType;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.Schema;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.EncodingProperty;
+import io.programmingnotes.apigenerator.data.oapi.v3.MediaType;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.Schema;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.Map;
 import java.util.Set;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class MediaTypeValidator extends Validator3Base<OpenApi3, MediaType> {
   private static final ValidationResult ENCODING_MISMATCH = new ValidationResult(ERROR, 119, "Encoding property '%s' is not a corresponding schema property");

@@ -1,16 +1,18 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.Header;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.data.oapi.v3.Header;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.regex.Pattern;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class HeaderValidator extends Validator3Base<OpenApi3, Header> {
   private static final ValidationResult CONTENT_ONY_ONE_ERR = new ValidationResult(ERROR, 113, "Content can only contain one media type.");

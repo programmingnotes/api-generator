@@ -1,18 +1,20 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.OAuthFlow;
-import org.openapi4j.parser.model.v3.OAuthFlows;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.SecurityScheme;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OAuthFlow;
+import io.programmingnotes.apigenerator.data.oapi.v3.OAuthFlows;
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.SecurityScheme;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.regex.Pattern;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.*;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.*;
 
 class SecuritySchemeValidator extends Validator3Base<OpenApi3, SecurityScheme> {
   private static final ValidationResult OAUTH_FLOW_REQUIRED = new ValidationResult(ERROR, 141, "At least one OAuth flow is required");

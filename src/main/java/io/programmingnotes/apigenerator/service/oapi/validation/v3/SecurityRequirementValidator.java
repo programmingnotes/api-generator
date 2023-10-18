@@ -1,19 +1,21 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.SecurityRequirement;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.SecurityRequirement;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.OAUTH2;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.OPENIDCONNECT;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.OAUTH2;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.OPENIDCONNECT;
 
 class SecurityRequirementValidator extends Validator3Base<OpenApi3, SecurityRequirement> {
   private static final ValidationResult SCHEME_NOT_DEFINED = new ValidationResult(ERROR, 139, "Security scheme '%s' is not defined in components");

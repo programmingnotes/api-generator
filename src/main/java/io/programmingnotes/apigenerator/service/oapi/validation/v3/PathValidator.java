@@ -1,13 +1,15 @@
 package io.programmingnotes.apigenerator.service.oapi.validation.v3;
 
-import org.openapi4j.core.validation.ValidationResult;
-import org.openapi4j.core.validation.ValidationResults;
-import org.openapi4j.parser.model.v3.OpenApi3;
-import org.openapi4j.parser.model.v3.Operation;
-import org.openapi4j.parser.model.v3.Parameter;
-import org.openapi4j.parser.model.v3.Path;
-import org.openapi4j.parser.validation.ValidationContext;
-import org.openapi4j.parser.validation.Validator;
+
+
+import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
+import io.programmingnotes.apigenerator.data.oapi.v3.Operation;
+import io.programmingnotes.apigenerator.data.oapi.v3.Parameter;
+import io.programmingnotes.apigenerator.data.oapi.v3.Path;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationContext;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResult;
+import io.programmingnotes.apigenerator.service.oapi.validation.ValidationResults;
+import io.programmingnotes.apigenerator.service.oapi.validation.Validator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,14 +20,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.openapi4j.core.validation.ValidationSeverity.ERROR;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_$REF;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_EXTENSIONS;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_NAME;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_PARAMETERS;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_REQUIRED;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.CRUMB_SERVERS;
-import static org.openapi4j.parser.validation.v3.OAI3Keywords.PATH;
+import static io.programmingnotes.apigenerator.service.oapi.validation.ValidationSeverity.ERROR;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_$REF;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_EXTENSIONS;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_NAME;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_PARAMETERS;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_REQUIRED;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.CRUMB_SERVERS;
+import static io.programmingnotes.apigenerator.service.oapi.validation.v3.OAI3Keywords.PATH;
 
 class PathValidator extends Validator3Base<OpenApi3, Path> {
   private static final Validator<OpenApi3, Path> INSTANCE = new PathValidator();
