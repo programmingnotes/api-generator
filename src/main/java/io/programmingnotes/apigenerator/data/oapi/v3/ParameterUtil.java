@@ -1,8 +1,10 @@
 package io.programmingnotes.apigenerator.data.oapi.v3;
 
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.model.OAIContext;
-import org.openapi4j.core.model.reference.Reference;
+
+
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
+import io.programmingnotes.apigenerator.data.oapi.reference.Reference;
+import io.programmingnotes.apigenerator.exception.DecodeException;
 
 import java.util.ArrayList;
 import java.util.Collection;

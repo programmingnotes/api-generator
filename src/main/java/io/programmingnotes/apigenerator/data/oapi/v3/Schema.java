@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.openapi4j.core.exception.DecodeException;
-import org.openapi4j.core.model.OAIContext;
-import org.openapi4j.core.util.TreeUtil;
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
+import io.programmingnotes.apigenerator.exception.DecodeException;
+import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.openapi4j.core.model.v3.OAI3SchemaKeywords.*;
+import static io.programmingnotes.apigenerator.data.oapi.v3.OAI3SchemaKeywords.*;
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 public class Schema extends AbsExtendedRefOpenApiSchema<Schema> {

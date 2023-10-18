@@ -2,7 +2,7 @@ package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapi4j.core.model.OAIContext;
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
 
 import java.util.List;
 import java.util.Map;

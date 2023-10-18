@@ -1,7 +1,7 @@
 package io.programmingnotes.apigenerator.data.oapi.v3;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapi4j.core.model.OAIContext;
+import io.programmingnotes.apigenerator.data.oapi.OAIContext;
 
 import java.util.HashMap;
 import java.util.List;
