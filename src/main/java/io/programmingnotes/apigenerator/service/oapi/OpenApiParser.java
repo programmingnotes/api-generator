@@ -2,6 +2,7 @@ package io.programmingnotes.apigenerator.service.oapi;
 
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import io.programmingnotes.apigenerator.data.oapi.AuthOption;
 import io.programmingnotes.apigenerator.data.oapi.OAI;
 import io.programmingnotes.apigenerator.exception.ResolutionException;
@@ -52,7 +53,7 @@ public abstract class OpenApiParser<O extends OAI> {
    * @throws ValidationException In case of validation error.
    */
   public O parse(URL url, boolean validate) throws ResolutionException, ValidationException {
-    return parse(url, null, validate);
+    return parse(url, null, null, validate);
   }
 
   /**
@@ -65,5 +66,5 @@ public abstract class OpenApiParser<O extends OAI> {
    * @throws ResolutionException In case of wrong path, JSON reference issue.
    * @throws ValidationException In case of validation error.
    */
-  public abstract O parse(URL url, List<AuthOption> authOptions, boolean validate) throws ResolutionException, ValidationException;
+  public abstract O parse(URL url, List<AuthOption> authOptions, JsonNode basedocument, boolean validate) throws ResolutionException, ValidationException;
 }

@@ -37,14 +37,10 @@ public class SecurityConfig {
                 .sessionManagement(smc -> smc.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeRequests()
                 .requestMatchers("/api/login").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
         return http.build();
     }
 
-    @Bean
-    public JwtConfig jwtConfig() {
-        return new JwtConfig();
-    }
 
 }
 

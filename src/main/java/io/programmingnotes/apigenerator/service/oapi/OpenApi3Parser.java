@@ -2,6 +2,7 @@ package io.programmingnotes.apigenerator.service.oapi;
 
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import io.programmingnotes.apigenerator.data.oapi.AuthOption;
 import io.programmingnotes.apigenerator.data.oapi.v3.OAI3Context;
 import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
@@ -9,6 +10,7 @@ import io.programmingnotes.apigenerator.exception.ResolutionException;
 import io.programmingnotes.apigenerator.service.oapi.util.TreeUtil;
 import io.programmingnotes.apigenerator.service.oapi.validation.ValidationException;
 import io.programmingnotes.apigenerator.service.oapi.validation.v3.OpenApi3Validator;
+import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 /**
  * The parser for Open API v3.x.x
  */
+@Service
 public class OpenApi3Parser extends OpenApiParser<OpenApi3> {
   private static final String NULL_SPEC_URL = "Failed to load spec from 'null' location";
   private static final String INVALID_SPEC = "Failed to load spec at '%s'";
@@ -24,7 +27,7 @@ public class OpenApi3Parser extends OpenApiParser<OpenApi3> {
    * {@inheritDoc}
    */
   @Override
-  public OpenApi3 parse(URL url, List<AuthOption> authOptions, boolean validate) throws ResolutionException, ValidationException {
+  public OpenApi3 parse(URL url, List<AuthOption> authOptions, JsonNode basedocument, boolean validate) throws ResolutionException, ValidationException {
     if (url == null) {
       throw new ResolutionException(NULL_SPEC_URL);
     }
@@ -32,7 +35,7 @@ public class OpenApi3Parser extends OpenApiParser<OpenApi3> {
     OpenApi3 api;
 
     try {
-      OAI3Context context = new OAI3Context(url, authOptions);
+      OAI3Context context = new OAI3Context(url, authOptions, basedocument);
       api = TreeUtil.json.convertValue(context.getBaseDocument(), OpenApi3.class);
       api.setContext(context);
     } catch (IllegalArgumentException e) {
