@@ -5,12 +5,12 @@ import lombok.Setter;
 
 import java.util.List;
 
-public class SpecSummary {
+public class SpecAPIResponseFields {
     @Getter @Setter
     private String name;
     @Getter @Setter
     private String description;
     @Getter @Setter
-    private List<SpecAPI> specAPIs;
+    private List<SpecAPIResponseFields> childFields;
 
 }

@@ -28,6 +28,7 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+	implementation 'io.swagger.core.v3:swagger-core:2.2.16'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

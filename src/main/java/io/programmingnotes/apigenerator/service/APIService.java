@@ -1,15 +1,31 @@
 package io.programmingnotes.apigenerator.service;
 
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.programmingnotes.apigenerator.data.OpenAPISummary;
+import io.programmingnotes.apigenerator.data.apigen.APIExample;
+import io.programmingnotes.apigenerator.data.apigen.SpecByExample;
 import io.programmingnotes.apigenerator.data.oapi.AuthOption;
 import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
 import io.programmingnotes.apigenerator.exception.ResolutionException;
 import io.programmingnotes.apigenerator.repository.OpenAPISummaryRepository;
 import io.programmingnotes.apigenerator.service.oapi.OpenApi3Parser;
 import io.programmingnotes.apigenerator.service.oapi.validation.ValidationException;
+import io.swagger.v3.oas.models.Operation;
+import io.swagger.v3.oas.models.PathItem;
+import io.swagger.v3.oas.models.Paths;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.media.Content;
+import io.swagger.v3.oas.models.media.MediaType;
+import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.parameters.RequestBody;
+import io.swagger.v3.oas.models.responses.ApiResponse;
+import io.swagger.v3.oas.models.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +34,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import io.swagger.v3.oas.models.OpenAPI;
 
 @Service
 public class APIService {
@@ -43,7 +62,6 @@ public class APIService {
                 apiSummary.setUserId("test");
                 apiSummary.setOapi3Spec(openAPI3);
                 openAPISummaryRepository.save(apiSummary);
-                System.out.println(apiSummary);
             } catch (ResolutionException e) {
                 throw new RuntimeException(e);
             } catch (ValidationException e) {
@@ -53,5 +71,111 @@ public class APIService {
             throw new RuntimeException(e);
         }
         return false;
+    }
+
+    public Boolean createSpecFromExample(SpecByExample specExample) {
+        OpenAPI openAPI = createOpenAPIHeader(specExample);
+        Paths paths = new Paths();
+        for(APIExample eachAPI : specExample.getSpecAPIs()) {
+            Operation operation = createAPIOperation(eachAPI);
+            if (eachAPI.getMethod() == Constants.APIMethods.GET){
+                paths.addPathItem(eachAPI.getPath(),  new PathItem().get(operation));
+            }
+            if (eachAPI.getMethod() == Constants.APIMethods.POST){
+                paths.addPathItem(eachAPI.getPath(),  new PathItem().post(operation));
+            }
+            if (eachAPI.getMethod() == Constants.APIMethods.PUT){
+                paths.addPathItem(eachAPI.getPath(),  new PathItem().put(operation));
+            }
+            if (eachAPI.getMethod() == Constants.APIMethods.DELETE){
+                paths.addPathItem(eachAPI.getPath(),  new PathItem().delete(operation));
+            }
+            openAPI.paths(paths);
+        }
+        System.out.println(openAPI);
+
+        return false;
+    }
+
+    private Operation createAPIOperation(APIExample eachAPI) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode requestJson = null;
+        Map<String, JsonNode> responseJson = new HashMap<String, JsonNode>();
+        try {
+            // Attempt to deserialize the JSON string into a JsonNode
+            requestJson = objectMapper.readTree(eachAPI.getRequest());
+            for (String key: eachAPI.getResponses().keySet()) {
+                JsonNode eachResponse =  objectMapper.readTree(eachAPI.getResponses().get(key));
+                responseJson.put(key, eachResponse);
+            }
+
+            // If successful, you can work with the JSON data
+        } catch (JsonParseException e) {
+            System.err.println("JSON parse error: " + e.getMessage());
+        } catch (JsonMappingException e) {
+            System.err.println("JSON mapping error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
+        Operation newOpeartion = new Operation()
+                .tags(List.of(eachAPI.getName()))
+                .summary("Created from sample json");
+        Schema requestSchema = new Schema().type("object");
+        requestSchema = createSchemaFromJsonNode(requestJson, null);
+        RequestBody requestBody = new RequestBody()
+                .content(new Content().addMediaType("application/json", new MediaType().schema(requestSchema)));
+        newOpeartion.setRequestBody(requestBody);
+        ApiResponses apiResponses = new ApiResponses();
+        for (String key: responseJson.keySet()) {
+            Schema eachResponseSchema = new Schema().type("object");
+            eachResponseSchema = createSchemaFromJsonNode(responseJson.get(key), null);
+            ApiResponse eachResponse = new ApiResponse()
+                    .description("API Response")
+                    .content(new Content().addMediaType("application/json", new MediaType().schema(eachResponseSchema)));
+            apiResponses.addApiResponse(key, eachResponse);
+        }
+        return newOpeartion;
+    }
+
+    private Schema createSchemaFromJsonNode(JsonNode jsonNode, String fieldName) {
+        Schema schema = new Schema();
+
+        if (jsonNode.isObject()) {
+            ObjectNode objectNode = (ObjectNode) jsonNode;
+            objectNode.fields().forEachRemaining(entry -> {
+                String childFieldName = entry.getKey();
+                JsonNode childNode = entry.getValue();
+                Schema childSchema = createSchemaFromJsonNode(childNode, childFieldName);
+                schema.addProperties(childFieldName, childSchema);
+            });
+        } else if (jsonNode.isArray()) {
+            ArrayNode arrayNode = (ArrayNode) jsonNode;
+            if (arrayNode.size() > 0) {
+                JsonNode firstElement = arrayNode.get(0);
+                Schema itemsSchema = createSchemaFromJsonNode(firstElement, fieldName);
+                schema.type("array").items(itemsSchema);
+            } else {
+                // Handle an empty array, you may choose to treat it as a "string" array or something else.
+                schema.type("array").items(new Schema().type("string"));
+            }
+        } else if (jsonNode.isTextual()) {
+            schema.type("string");
+        } else if (jsonNode.isBoolean()) {
+            schema.type("boolean");
+        } else if (jsonNode.isNumber() || jsonNode.isBigDecimal() || jsonNode.isInt()) {
+            schema.type("integer");
+        }
+
+        return schema;
+    }
+
+    private OpenAPI createOpenAPIHeader(SpecByExample specExample) {
+        OpenAPI openAPI = new OpenAPI()
+                .info(new Info()
+                        .title(specExample.getName())
+                        .version("1.0.0")
+                        .description(specExample.getDescription())
+                );
+        return openAPI;
     }
 }
