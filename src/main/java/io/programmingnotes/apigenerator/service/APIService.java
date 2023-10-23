@@ -8,8 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.programmingnotes.apigenerator.data.OpenAPISummary;
-import io.programmingnotes.apigenerator.data.apigen.APIExample;
-import io.programmingnotes.apigenerator.data.apigen.SpecByExample;
+import io.programmingnotes.apigenerator.data.apigen.*;
 import io.programmingnotes.apigenerator.data.oapi.AuthOption;
 import io.programmingnotes.apigenerator.data.oapi.v3.OpenApi3;
 import io.programmingnotes.apigenerator.exception.ResolutionException;
@@ -177,5 +176,109 @@ public class APIService {
                         .description(specExample.getDescription())
                 );
         return openAPI;
+    }
+
+    private OpenAPI createOpenAPIHeaderFromSpecSummary(SpecSummary specSummary) {
+        OpenAPI openAPI = new OpenAPI()
+                .info(new Info()
+                        .title(specSummary.getName())
+                        .version("1.0.0")
+                        .description(specSummary.getDescription())
+                );
+        return openAPI;
+    }
+
+    public Boolean createSpec(SpecSummary specSummary) {
+        OpenAPI openAPI = createOpenAPIHeaderFromSpecSummary(specSummary);
+        Paths paths = new Paths();
+        for (SpecAPI eachSpecAPI  : specSummary.getSpecAPIs()) {
+            Operation operation = createAPIOperation(eachSpecAPI);
+            if (eachSpecAPI.getType() == Constants.APIMethods.GET){
+                paths.addPathItem(eachSpecAPI.getPath(),  new PathItem().get(operation));
+            }
+            if (eachSpecAPI.getType() == Constants.APIMethods.POST){
+                paths.addPathItem(eachSpecAPI.getPath(),  new PathItem().post(operation));
+            }
+            if (eachSpecAPI.getType() == Constants.APIMethods.PUT){
+                paths.addPathItem(eachSpecAPI.getPath(),  new PathItem().put(operation));
+            }
+            if (eachSpecAPI.getType() == Constants.APIMethods.DELETE){
+                paths.addPathItem(eachSpecAPI.getPath(),  new PathItem().delete(operation));
+            }
+            openAPI.paths(paths);
+
+        }
+        return null;
+    }
+
+    private Operation createAPIOperation(SpecAPI specAPI) {
+
+        Operation newOpeartion = new Operation()
+                .tags(List.of(specAPI.getName()))
+                .summary("Created from sample json");
+        Schema requestSchema = new Schema().type("object");
+        requestSchema = createSchemaFromRequestFields(specAPI.getRequest());
+        RequestBody requestBody = new RequestBody()
+                .content(new Content().addMediaType("application/json", new MediaType().schema(requestSchema)));
+        newOpeartion.setRequestBody(requestBody);
+        ApiResponses apiResponses = new ApiResponses();
+        for (String key: specAPI.getResponses().keySet()) {
+            Schema eachResponseSchema = new Schema().type("object");
+            eachResponseSchema = createSchemaFromResponseFields(specAPI.getResponses().get(key));
+            ApiResponse eachResponse = new ApiResponse()
+                    .description("API Response")
+                    .content(new Content().addMediaType("application/json", new MediaType().schema(eachResponseSchema)));
+            apiResponses.addApiResponse(key, eachResponse);
+        }
+        return newOpeartion;
+    }
+
+    private Schema createSchemaFromRequestFields(List<SpecAPIRequestFields> requestFields) {
+        Schema schema = new Schema();
+        for (SpecAPIRequestFields eachReqField: requestFields) {
+            if (eachReqField.getType().equals("object")) {
+                Schema childSchema = createSchemaFromRequestFields(eachReqField.getChildFields());
+                schema.type("object").addProperty(eachReqField.getName(), childSchema);
+
+            } else if (eachReqField.getType().equals("array")) {
+                Schema childSchema = createSchemaFromRequestFields(eachReqField.getChildFields());
+                schema.type("array").addProperty(eachReqField.getName(), childSchema);
+
+            } else if (eachReqField.getType().equals("integer")) {
+                schema.type("integer");
+            } else if (eachReqField.getType().equals("string")) {
+                schema.type("string");
+            } else if (eachReqField.getType().equals("boolean")) {
+                schema.type("boolean");
+            }
+        }
+
+
+        return schema;
+    }
+
+    private Schema createSchemaFromResponseFields(List<SpecAPIResponseFields> responseFields) {
+        Schema schema = new Schema();
+
+        for (SpecAPIResponseFields eachResField: responseFields) {
+            if (eachResField.getType().equals("object")) {
+                Schema childSchema = createSchemaFromResponseFields(eachResField.getChildFields());
+                schema.type("object").addProperty(eachResField.getName(), childSchema);
+
+            } else if (eachResField.getType().equals("array")) {
+                Schema childSchema = createSchemaFromResponseFields(eachResField.getChildFields());
+                schema.type("array").addProperty(eachResField.getName(), childSchema);
+
+            } else if (eachResField.getType().equals("integer")) {
+                schema.type("integer");
+            } else if (eachResField.getType().equals("string")) {
+                schema.type("string");
+            } else if (eachResField.getType().equals("boolean")) {
+                schema.type("boolean");
+            }
+        }
+
+
+        return schema;
     }
 }

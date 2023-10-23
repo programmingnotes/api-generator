@@ -11,6 +11,8 @@ public class SpecAPIResponseFields {
     @Getter @Setter
     private String description;
     @Getter @Setter
+    private String type;
+    @Getter @Setter
     private List<SpecAPIResponseFields> childFields;
 
 }

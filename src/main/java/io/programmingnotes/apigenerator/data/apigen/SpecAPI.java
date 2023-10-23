@@ -11,6 +11,8 @@ public class SpecAPI {
     @Getter @Setter
     private String path;
     @Getter @Setter
+    private String name;
+    @Getter @Setter
     private Constants.APIMethods type;
     @Getter @Setter
     private List<SpecAPIRequestFields> request;

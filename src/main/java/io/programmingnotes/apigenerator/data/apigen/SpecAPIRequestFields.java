@@ -12,7 +12,7 @@ public class SpecAPIRequestFields {
     @Getter @Setter
     private String description;
     @Getter @Setter
-    private Constants.APIMethods type;
+    private String type;
     @Getter @Setter
     private String defaultValue;
     @Getter @Setter

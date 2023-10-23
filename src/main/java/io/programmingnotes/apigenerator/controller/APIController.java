@@ -34,5 +34,6 @@ public class APIController {
         // Handle the APISpec object and generate a JSON response.
         // You can process the API spec and return a response.
         //Boolean result = apiService.generateSpec(specSummary);
+        Boolean result = apiService.createSpec(specSummary);
         return "Generated JSON response based on the APISpec object.";
     }}
