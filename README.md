@@ -1,3 +1,3 @@
 # API Generator
 Complete documentation
-addded
+How to run
